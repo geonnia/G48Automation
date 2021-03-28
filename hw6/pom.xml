@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>hw5</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <driver.dir.path>${project.basedir}/src/main/resources/</driver.dir.path>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <browser>${browser}</browser>
+        <driver.name>${driver.name}</driver.name>
+        <driver.path>${driver.path}</driver.path>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <argLine>-Dbrowser=${browser} -D${driver.name}=${driver.path}</argLine>
+                    <!--                    <systemPropertyVariables>-->
+                    <!--                        <browser>firefox</browser>-->
+
+                    <!--                        <webdriver.gecko.driver>${driver.dir.path}/driverFirefox/geckodriver.exe</webdriver.gecko.driver>-->
+
+                    <!--                        <webdriver.opera.driver>${driver.dir.path}/driverOpera/operadriver.exe</webdriver.opera.driver>-->
+                    <!--                    </systemPropertyVariables>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>Chrome</id>
+            <properties>
+                <browser>chrome</browser>
+                <driver.name>webdriver.chrome.driver</driver.name>
+                <driver.path>${driver.dir.path}/driverChrome/chromedriver.exe</driver.path>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>Firefox</id>
+            <properties>
+                <browser>firefox</browser>
+                <driver.name>webdriver.gecko.driver</driver.name>
+                <driver.path>${driver.dir.path}/driverFirefox/geckodriver.exe</driver.path>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-opera-driver</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+
+    </dependencies>
+
+</project>
