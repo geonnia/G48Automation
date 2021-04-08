@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import java.util.*;
 
 
-public class ProjectPage extends BasePage{
+public class ProjectPage extends BaseProjectPage {
     public ProjectPage(WebDriver driver){
         super(driver);
     }
